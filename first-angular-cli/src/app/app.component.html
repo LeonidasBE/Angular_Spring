@@ -1,0 +1,31 @@
+<h1>
+  {{ title }}
+</h1>
+<br/>
+<app-task-list></app-task-list>
+
+<!-- Uso de PIPES do angular -->
+<br/>
+{{ user | json }}
+<br/>
+ {{ upperText | uppercase }}
+<br/>
+{{ lowerText | lowercase }}
+<br/>
+{{ percentual | percent }}
+<br/>
+{{ data | date : 'dd/MM/yyyy' }}
+<br/>
+{{ dinheiro | currency : 'R$' }}
+
+<!-- Diretivas -->
+<div *ngIf="isAdmin">
+  Administrador 2
+</div>
+<br/>
+<div [ngSwitch]="profile">
+  <p *ngSwitchCase="1">Voce pode ler 1</p>
+  <p *ngSwitchCase="2">Voce pode ler 2</p>
+  <p *ngSwitchCase="3">Voce pode ler 3</p>
+  <p *ngSwitchDefault>Caiu no default</p>
+</div>
