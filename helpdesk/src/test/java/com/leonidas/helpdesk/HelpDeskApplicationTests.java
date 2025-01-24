@@ -1,13 +1,13 @@
-package com.leonidas.helpdesk;
+package com.leonidas.HelpDesk;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class HelpDeskApplicationTests {
+class HelpDeskApplicationTests {
 
 	@Test
-	public void contextLoads() {
+	void contextLoads() {
 	}
 
 }

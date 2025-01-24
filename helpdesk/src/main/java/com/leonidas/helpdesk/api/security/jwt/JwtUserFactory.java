@@ -1,29 +1,38 @@
-package com.leonidas.helpdesk.api.security.jwt;
+package com.leonidas.HelpDesk.api.security.jwt;
+
+import com.leonidas.HelpDesk.api.entity.User;
+import com.leonidas.HelpDesk.api.enums.ProfileEnum;
+import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-
-import com.leonidas.helpdesk.api.entity.User;
-import com.leonidas.helpdesk.api.enums.ProfileEnum;
-
+@NoArgsConstructor
 public class JwtUserFactory {
 
-	private JwtUserFactory() {
+    /**
+     * Cria o usuario
+     * @param user
+     * @return
+     */
+    public static JwtUser create(User user) {
+        return new JwtUser(
+                user.getId(),
+                user.getEmail(),
+                user.getPassword(),
+                mapToGrantedAuthorities(user.getProfile())
+        );
+    }
 
-	}
-
-	public static JwtUser create(User user) {
-		return new JwtUser(user.getId(), user.getEmail(), user.getPassword(),
-				mapToGrantedAuthorities(user.getProfile()));
-	}
-
-	private static List<GrantedAuthority> mapToGrantedAuthorities(ProfileEnum profileEnum) {
-		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-		authorities.add(new SimpleGrantedAuthority(profileEnum.toString()));
-		return authorities;
-	}
+    /**
+     * Converte o perfil de usuario para o que é usado no Spring Security
+     */
+    private static List<GrantedAuthority> mapToGrantedAuthorities(ProfileEnum profileEnum){
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority(profileEnum.toString()));
+        return authorities;
+    }
 
 }

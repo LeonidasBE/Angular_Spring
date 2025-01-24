@@ -1,25 +1,23 @@
-package com.leonidas.helpdesk.api.security.jwt;
+package com.leonidas.HelpDesk.api.security.jwt;
 
-import java.io.IOException;
-import java.io.Serializable;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
+import java.io.Serial;
+import java.io.Serializable;
+
 @Component
 public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint, Serializable {
 
-	private static final long serialVersionUID = 1L;
+    @Serial
+    private static final long serialVersionUID = 6269694432560751201L;
 
-	@Override
-	public void commence(HttpServletRequest request, HttpServletResponse response,
-			AuthenticationException authException) throws IOException, ServletException {
-		response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
-	}
-
+    @Override
+    public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException {
+        response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
+    }
 }

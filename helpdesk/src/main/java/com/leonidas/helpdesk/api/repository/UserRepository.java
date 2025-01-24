@@ -1,11 +1,10 @@
-package com.leonidas.helpdesk.api.repository;
+package com.leonidas.HelpDesk.api.repository;
 
+import com.leonidas.HelpDesk.api.entity.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
-
-import com.leonidas.helpdesk.api.entity.User;
 
 public interface UserRepository extends MongoRepository<User, String> {
 
-	User findByEmail(String email);
+    User findByEmail(String email);
 
 }

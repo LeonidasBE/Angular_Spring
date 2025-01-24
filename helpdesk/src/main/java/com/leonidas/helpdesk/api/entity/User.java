@@ -1,62 +1,31 @@
-package com.leonidas.helpdesk.api.entity;
+package com.leonidas.HelpDesk.api.entity;
 
-import javax.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotBlank;
+import com.leonidas.HelpDesk.api.enums.ProfileEnum;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.leonidas.helpdesk.api.enums.ProfileEnum;
-
 @Document
+@Getter
+@Setter
 public class User {
 
-	@Id
-	private String id;
+    @Id
+    private String id;
 
-	@Indexed(unique = true)
-	@NotBlank(message = "Email required")
-	@Email(message = "Invalid email")
-	private String email;
+    @Indexed(unique = true)
+    @NotBlank(message = "Email Required")
+    @Email(message = "Email invalid")
+    private String email;
 
-	@NotBlank(message = "Password Required")
-	@Size(min = 6)
-	private String password;
+    @NotBlank(message = "Password required")
+    @Size(min = 6)
+    private String password;
 
-	private ProfileEnum profile;
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public ProfileEnum getProfile() {
-		return profile;
-	}
-
-	public void setProfile(ProfileEnum profile) {
-		this.profile = profile;
-	}
-
+    private ProfileEnum profile;
 }

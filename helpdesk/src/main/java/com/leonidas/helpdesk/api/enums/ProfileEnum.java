@@ -1,7 +1,9 @@
-package com.leonidas.helpdesk.api.enums;
+package com.leonidas.HelpDesk.api.enums;
 
 public enum ProfileEnum {
 
-	ROLE_ADMIN, ROEL_CUSTOMER, ROLE_TECNICIAN
+    ROLE_ADMIN,
+    ROLE_CUSTOMER,
+    ROLE_TECNICIAN
 
 }

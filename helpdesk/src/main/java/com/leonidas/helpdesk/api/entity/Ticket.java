@@ -1,131 +1,45 @@
-package com.leonidas.helpdesk.api.entity;
+package com.leonidas.HelpDesk.api.entity;
 
-import java.util.Date;
-import java.util.List;
-
+import com.leonidas.HelpDesk.api.enums.PriorityEnum;
+import com.leonidas.HelpDesk.api.enums.StatusEnum;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.leonidas.helpdesk.api.enums.PriorityEnum;
-import com.leonidas.helpdesk.api.enums.StatusEnum;
+import java.util.Date;
+import java.util.List;
 
 @Document
+@Getter
+@Setter
 public class Ticket {
 
-	@Id
-	private String id;
+    @Id
+    private String id;
 
-	@DBRef(lazy = true)
-	private User user;
+    @DBRef(lazy = true)
+    private User user;
 
-	private Date date;
+    private Date date;
 
-	private String title;
+    private String title;
 
-	private Integer number;
+    private Integer number;
 
-	private StatusEnum status;
+    private StatusEnum status;
 
-	private PriorityEnum priority;
+    private PriorityEnum priority;
 
-	@DBRef(lazy = true)
-	private User assignedUser;
+    @DBRef(lazy = true)
+    private User assignee;
 
-	private String description;
+    private String description;
 
-	private String image;
+    private String image;
 
-	@Transient
-	private List<ChangeStatus> changes;
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public Integer getNumber() {
-		return number;
-	}
-
-	public void setNumber(Integer number) {
-		this.number = number;
-	}
-
-	public StatusEnum getStatus() {
-		return status;
-	}
-
-	public void setStatus(StatusEnum status) {
-		this.status = status;
-	}
-
-	public PriorityEnum getPriority() {
-		return priority;
-	}
-
-	public void setPriority(PriorityEnum priority) {
-		this.priority = priority;
-	}
-
-	public User getAssignedUser() {
-		return assignedUser;
-	}
-
-	public void setAssignedUser(User assignedUser) {
-		this.assignedUser = assignedUser;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
-	}
-
-	public List<ChangeStatus> getChanges() {
-		return changes;
-	}
-
-	public void setChanges(List<ChangeStatus> changes) {
-		this.changes = changes;
-	}
-
+    @Transient
+    private List<ChangeStatus> changes;
 }

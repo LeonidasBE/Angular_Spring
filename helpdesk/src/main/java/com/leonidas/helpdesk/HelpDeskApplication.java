@@ -1,16 +1,17 @@
-package com.leonidas.helpdesk;
+package com.leonidas.HelpDesk;
 
+import com.leonidas.HelpDesk.api.entity.User;
+import com.leonidas.HelpDesk.api.enums.ProfileEnum;
+import com.leonidas.HelpDesk.api.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.leonidas.helpdesk.api.entity.User;
-import com.leonidas.helpdesk.api.enums.ProfileEnum;
-import com.leonidas.helpdesk.api.repository.UserRepository;
-
 @SpringBootApplication
+@AutoConfiguration
 public class HelpDeskApplication {
 
 	public static void main(String[] args) {
@@ -35,5 +36,4 @@ public class HelpDeskApplication {
 			userRepository.save(admin);
 		}
 	}
-
 }

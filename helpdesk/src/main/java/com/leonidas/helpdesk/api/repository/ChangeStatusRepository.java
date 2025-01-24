@@ -1,11 +1,10 @@
-package com.leonidas.helpdesk.api.repository;
+package com.leonidas.HelpDesk.api.repository;
 
+import com.leonidas.HelpDesk.api.entity.ChangeStatus;
 import org.springframework.data.mongodb.repository.MongoRepository;
-
-import com.leonidas.helpdesk.api.entity.ChangeStatus;
 
 public interface ChangeStatusRepository extends MongoRepository<ChangeStatus, String> {
 
-	Iterable<ChangeStatus> findByTicketIdOrderByDateChangeStatusDesc(String ticketId);
+    Iterable<ChangeStatus> findByTicketIdOrderByDateChangeStatusDesc(String ticketId);
 
 }

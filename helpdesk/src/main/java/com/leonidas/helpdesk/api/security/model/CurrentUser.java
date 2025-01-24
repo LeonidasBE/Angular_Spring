@@ -1,31 +1,16 @@
-package com.leonidas.helpdesk.api.security.model;
+package com.leonidas.HelpDesk.api.security.model;
 
-import com.leonidas.helpdesk.api.entity.User;
+import com.leonidas.HelpDesk.api.entity.User;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
+@AllArgsConstructor
+@Getter
+@Setter
 public class CurrentUser {
 
-	private String token;
-	private User user;
-
-	public CurrentUser(String token, User user) {
-		this.token = token;
-		this.user = user;
-	}
-
-	public String getToken() {
-		return token;
-	}
-
-	public void setToken(String token) {
-		this.token = token;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
+    private String token;
+    private User user;
 
 }

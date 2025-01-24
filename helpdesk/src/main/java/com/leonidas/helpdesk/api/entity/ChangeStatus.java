@@ -1,67 +1,30 @@
-package com.leonidas.helpdesk.api.entity;
+package com.leonidas.HelpDesk.api.entity;
 
-import java.util.Date;
-
+import com.leonidas.HelpDesk.api.enums.StatusEnum;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.leonidas.helpdesk.api.enums.StatusEnum;
+import java.util.Date;
 
 @Document
+@Getter
+@Setter
 public class ChangeStatus {
 
-	@Id
-	private String id;
+    @Id
+    private String id;
 
-	@DBRef
-	private Ticket ticket;
+    @DBRef(lazy = true)
+    private Ticket ticket;
 
-	@DBRef
-	private User userChange;
+    @DBRef(lazy = true)
+    private User userChange;
 
-	private Date dateChange;
+    private Date dateChangeStatus;
 
-	private StatusEnum status;
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public Ticket getTicket() {
-		return ticket;
-	}
-
-	public void setTicket(Ticket ticket) {
-		this.ticket = ticket;
-	}
-
-	public User getUserChange() {
-		return userChange;
-	}
-
-	public void setUserChange(User userChange) {
-		this.userChange = userChange;
-	}
-
-	public Date getDateChange() {
-		return dateChange;
-	}
-
-	public void setDateChange(Date dateChange) {
-		this.dateChange = dateChange;
-	}
-
-	public StatusEnum getStatus() {
-		return status;
-	}
-
-	public void setStatus(StatusEnum status) {
-		this.status = status;
-	}
+    private StatusEnum status;
 
 }
