@@ -85,7 +85,7 @@ public class JwtTokenUtil {
         final LocalDateTime createdDate = LocalDateTime.parse(createdDateString, FORMATTER);
 
         final Instant createdInstant = createdDate.atZone(ZoneId.systemDefault()).toInstant();
-        final Date expirationDate = Date.from(createdInstant.plusMillis(expiration * 1000));
+        final Date expirationDate = Date.from(createdInstant.plusMillis(expiration * 5000));
 
         return Jwts.builder()
                 .setClaims(claims)

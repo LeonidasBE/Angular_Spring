@@ -34,7 +34,7 @@ public class Ticket {
     private PriorityEnum priority;
 
     @DBRef(lazy = true)
-    private User assignee;
+    private User assignedUser;
 
     private String description;
 
