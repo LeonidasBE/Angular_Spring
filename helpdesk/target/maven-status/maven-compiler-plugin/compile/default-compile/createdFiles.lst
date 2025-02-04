@@ -1,5 +1,6 @@
 com\leonidas\HelpDesk\api\entity\User.class
 com\leonidas\HelpDesk\api\entity\ChangeStatus.class
+com\leonidas\HelpDesk\api\controller\TicketController.class
 com\leonidas\HelpDesk\api\repository\TicketRepository.class
 com\leonidas\HelpDesk\api\security\config\WebSecurityConfig.class
 com\leonidas\HelpDesk\api\security\jwt\JwtAuthenticationRequest.class
@@ -9,6 +10,8 @@ com\leonidas\HelpDesk\api\security\jwt\JwtUserFactory.class
 com\leonidas\HelpDesk\api\enums\PriorityEnum.class
 com\leonidas\HelpDesk\api\enums\ProfileEnum.class
 com\leonidas\HelpDesk\api\service\impl\UserServiceImpl.class
+com\leonidas\HelpDesk\api\dto\Summary.class
+com\leonidas\HelpDesk\api\response\Response.class
 com\leonidas\HelpDesk\api\service\TicketService.class
 com\leonidas\HelpDesk\api\repository\ChangeStatusRepository.class
 com\leonidas\HelpDesk\api\entity\Ticket.class
@@ -22,4 +25,5 @@ com\leonidas\HelpDesk\HelpDeskApplication.class
 com\leonidas\HelpDesk\api\service\UserService.class
 com\leonidas\HelpDesk\api\security\jwt\JwtTokenUtil.class
 com\leonidas\HelpDesk\api\service\impl\TicketServiceImpl.class
+com\leonidas\HelpDesk\api\controller\UserController.class
 com\leonidas\HelpDesk\api\filter\SimpleCORSFilter.class

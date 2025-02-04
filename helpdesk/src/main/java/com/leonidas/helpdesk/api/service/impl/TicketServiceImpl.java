@@ -76,7 +76,7 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public Page<Ticket> findByParameterAndAssignedUser(int page, int count, String title, String status, String priority, String assignedUser) {
+    public Page<Ticket> findByParametersAndAssignedUser(int page, int count, String title, String status, String priority, String assignedUser) {
         return this.ticketRepository
                 .findByTitleIgnoreCaseContainingAndStatusAndPriorityAndAssignedUserIdOrderByDateDesc(title, status, priority, assignedUser, PageRequest.of(page, count));
     }

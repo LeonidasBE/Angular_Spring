@@ -1,4 +1,6 @@
+D:\projetos\Angular_Spring\HelpDesk\src\main\java\com\leonidas\HelpDesk\api\controller\TicketController.java
 D:\projetos\Angular_Spring\HelpDesk\src\main\java\com\leonidas\HelpDesk\api\controller\UserController.java
+D:\projetos\Angular_Spring\HelpDesk\src\main\java\com\leonidas\HelpDesk\api\dto\Summary.java
 D:\projetos\Angular_Spring\HelpDesk\src\main\java\com\leonidas\HelpDesk\api\entity\ChangeStatus.java
 D:\projetos\Angular_Spring\HelpDesk\src\main\java\com\leonidas\HelpDesk\api\entity\Ticket.java
 D:\projetos\Angular_Spring\HelpDesk\src\main\java\com\leonidas\HelpDesk\api\entity\User.java
@@ -9,6 +11,7 @@ D:\projetos\Angular_Spring\HelpDesk\src\main\java\com\leonidas\HelpDesk\api\filt
 D:\projetos\Angular_Spring\HelpDesk\src\main\java\com\leonidas\HelpDesk\api\repository\ChangeStatusRepository.java
 D:\projetos\Angular_Spring\HelpDesk\src\main\java\com\leonidas\HelpDesk\api\repository\TicketRepository.java
 D:\projetos\Angular_Spring\HelpDesk\src\main\java\com\leonidas\HelpDesk\api\repository\UserRepository.java
+D:\projetos\Angular_Spring\HelpDesk\src\main\java\com\leonidas\HelpDesk\api\response\Response.java
 D:\projetos\Angular_Spring\HelpDesk\src\main\java\com\leonidas\HelpDesk\api\security\config\WebSecurityConfig.java
 D:\projetos\Angular_Spring\HelpDesk\src\main\java\com\leonidas\HelpDesk\api\security\controller\AuthenticationRestController.java
 D:\projetos\Angular_Spring\HelpDesk\src\main\java\com\leonidas\HelpDesk\api\security\jwt\JwtAuthenticationEntryPoint.java

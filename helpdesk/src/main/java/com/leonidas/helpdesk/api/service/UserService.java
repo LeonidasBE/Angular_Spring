@@ -17,5 +17,5 @@ public interface UserService {
 
     void delete(String id);
 
-    Page<User> findAll(int page, int count);
+    Page<User> findAllUsers(int page, int count);
 }

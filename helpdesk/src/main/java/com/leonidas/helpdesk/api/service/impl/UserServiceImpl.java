@@ -7,10 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-@Component
+@Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
@@ -32,7 +33,7 @@ public class UserServiceImpl implements UserService {
         this.userRepository.deleteById(id);
     }
 
-    public Page<User> findAll(int page, int count) {
+    public Page<User> findAllUsers(int page, int count) {
         return this.userRepository.findAll(PageRequest.of(page, count));
     }
 }

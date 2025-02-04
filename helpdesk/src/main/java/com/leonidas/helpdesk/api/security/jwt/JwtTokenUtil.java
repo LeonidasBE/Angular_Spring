@@ -1,5 +1,7 @@
 package com.leonidas.HelpDesk.api.security.jwt;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -9,6 +11,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.security.Key;
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -19,18 +23,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
-public class JwtTokenUtil {
-
+public class JwtTokenUtil implements Serializable {
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+
+    private static final long serialVersionUID = -3301605591108950415L;
 
     static final String CLAIM_KEY_USERNAME = "sub";
     static final String CLAIM_KEY_CREATED = "created";
     static final String CLAIM_KEY_EXPIRED = "exp";
 
-    @Value("${security.jwt.secret-key}")
+    @Value("${jwt.secret}")
     private String secret;
 
-    @Value("${security.jwt.expiration-time}")
+    @Value("${jwt.expiration}")
     private Long expiration;
 
     public String getUsernameFromToken(String token){
@@ -47,7 +52,7 @@ public class JwtTokenUtil {
     public Date getExpirationDateFromToken(String token) {
         Date expiration;
         try {
-            final Claims claims = null;
+            final Claims claims = getClaimsFromToken(token);
             expiration = claims.getExpiration();
         } catch(Exception ex) {
             expiration = null;
@@ -58,7 +63,11 @@ public class JwtTokenUtil {
     private Claims getClaimsFromToken(String token){
         Claims claims;
         try {
-            claims = Jwts.parser().setSigningKey(token).build().parseSignedClaims(token).getBody();
+            claims = Jwts.parser()
+                    .setSigningKey(secret)
+                    .build()
+                    .parseClaimsJws(token)
+                    .getBody();
         } catch(Exception ex){
             claims = null;
         }
@@ -72,7 +81,6 @@ public class JwtTokenUtil {
 
     public String generateToken(UserDetails userDetails){
         Map<String, Object> claims = new HashMap<>();
-
         final LocalDateTime createdDate = LocalDateTime.now();
         claims.put(CLAIM_KEY_USERNAME, userDetails.getUsername());
         claims.put(CLAIM_KEY_CREATED, createdDate.toString());
@@ -81,16 +89,16 @@ public class JwtTokenUtil {
     }
 
     private String doGenerateToken(Map<String, Object> claims) {
-        final String createdDateString = (String) claims.get(CLAIM_KEY_CREATED);
-        final LocalDateTime createdDate = LocalDateTime.parse(createdDateString, FORMATTER);
-
-        final Instant createdInstant = createdDate.atZone(ZoneId.systemDefault()).toInstant();
-        final Date expirationDate = Date.from(createdInstant.plusMillis(expiration * 5000));
+        final Date expirationDate = Date.from(
+                (LocalDateTime.parse((String) claims.get(CLAIM_KEY_CREATED), FORMATTER))
+                .atZone(ZoneId.systemDefault())
+                .toInstant()
+                .plusMillis(expiration * 5000));
 
         return Jwts.builder()
-                .setClaims(claims)
-                .setExpiration(expirationDate)
-                .signWith(getSignInKey(), SignatureAlgorithm.HS256)
+                .claims(claims)
+                .expiration(expirationDate)
+                .signWith(SignatureAlgorithm.HS256, getSignInKey())
                 .compact();
     }
 

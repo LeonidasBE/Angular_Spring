@@ -2,6 +2,7 @@ package com.leonidas.HelpDesk.api.entity;
 
 import com.leonidas.HelpDesk.api.enums.PriorityEnum;
 import com.leonidas.HelpDesk.api.enums.StatusEnum;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
@@ -13,8 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 @Document
-@Getter
-@Setter
+@Data
 public class Ticket {
 
     @Id

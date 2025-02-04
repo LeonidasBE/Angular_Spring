@@ -5,8 +5,6 @@ import com.leonidas.HelpDesk.api.entity.Ticket;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
-import java.util.Iterator;
-
 @Component
 public interface TicketService {
 
@@ -32,5 +30,5 @@ public interface TicketService {
 
     Iterable<Ticket> findAll();
 
-    Page<Ticket> findByParameterAndAssignedUser(int page, int count, String title, String status, String priority, String assignedUser);
+    Page<Ticket> findByParametersAndAssignedUser(int page, int count, String title, String status, String priority, String assignedUser);
 }
