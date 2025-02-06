@@ -7,11 +7,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="helloworld" />
-        <module name="HelpDesk" />
-        <module name="FirstSpringData" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="FirstSpringData" target="1.8" />
+      <module name="HelpDesk" target="1.8" />
       <module name="temporaryDirectory" target="17" />
     </bytecodeTargetLevel>
   </component>
