@@ -1,11 +1,3 @@
-/*! Copyright (c) 2013 Brandon Aaron (http://brandon.aaron.sh)
- * Licensed under the MIT License (LICENSE.txt).
- *
- * Version: 3.1.9
- *
- * Requires: jQuery 1.2.2+
- */
-
 (function (factory) {
     if ( typeof define === 'function' && define.amd ) {
         // AMD. Register as an anonymous module.
