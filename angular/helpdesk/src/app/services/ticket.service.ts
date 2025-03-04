@@ -33,7 +33,7 @@ export class TicketService {
   }
 
   findByParams(page: number, count: number, assignedToMe: boolean, t: Ticket){
-    t.number = t.number == null ? 0 : t.number;
+    t.number = t.number ?? 0;
     t.title = t.title == '' ? 'uninformed' : t.title;
     t.status = t.status == '' ? 'uninformed' : t.status;
     t.priority = t.priority == '' ? 'uninformed' : t.priority;
