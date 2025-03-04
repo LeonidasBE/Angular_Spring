@@ -4,10 +4,12 @@ import { User } from '../../model/user.model';
 import { SharedService } from '../../services/shared.service';
 import { Router } from '@angular/router';
 import { CurrentUser } from '../../model/current-user.model';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
-  imports: [],
+  imports: [CommonModule, FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
