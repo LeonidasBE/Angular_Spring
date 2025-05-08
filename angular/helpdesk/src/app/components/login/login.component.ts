@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../model/user.model';
@@ -9,9 +10,10 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
-  imports: [CommonModule, FormsModule],
+  standalone: true,
+  imports: [CommonModule, FormsModule, HttpClientModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
 

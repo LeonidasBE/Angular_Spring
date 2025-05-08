@@ -10,7 +10,8 @@ import { CurrentUser } from '../model/current-user.model';
 })
 export class UserService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   login(user: User): Observable<CurrentUser> {
     return this.http.post<CurrentUser>(`${HELP_DESK_API}/api/auth`,user);
