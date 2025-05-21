@@ -1,10 +1,10 @@
 import { HttpClientModule } from '@angular/common/http';
-import { UserService } from './../../services/user.service';
+import { UserService } from '../../../services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../model/user.model';
-import { SharedService } from '../../services/shared.service';
+import { User } from '../../../model/user.model';
+import { SharedService } from '../../../services/shared.service';
 import { Router } from '@angular/router';
-import { CurrentUser } from '../../model/current-user.model';
+import { CurrentUser } from '../../../model/current-user.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 

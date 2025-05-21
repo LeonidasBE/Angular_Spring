@@ -4,10 +4,11 @@ import { HeaderComponent } from './components/header/header.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SharedService } from './services/shared.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, MenuComponent, FooterComponent],
+  imports: [RouterOutlet, HeaderComponent, MenuComponent, FooterComponent, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -19,13 +20,18 @@ export class AppComponent {
 
   constructor() {
     this.shared = SharedService.getInstance();
-    this.showTemplate = true;
   }
 
   ngOnInit() {
     this.shared.showTemplate.subscribe(
       show => this.showTemplate = show
     )
+  }
+
+  showContentWrapper() {
+    return {
+      'content-wrapper' :  this.shared.isLoggedIn()
+    }
   }
 
 }
