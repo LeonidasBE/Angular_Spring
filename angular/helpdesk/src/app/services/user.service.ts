@@ -4,6 +4,7 @@ import { User } from '../model/user.model';
 import { HELP_DESK_API } from './helpdesk.api';
 import { Observable } from 'rxjs';
 import { CurrentUser } from '../model/current-user.model';
+import { ResponseApi } from '../model/response-api';
 
 @Injectable({
   providedIn: 'root'
@@ -17,12 +18,12 @@ export class UserService {
     return this.http.post<CurrentUser>(`${HELP_DESK_API}/api/auth`,user);
   }
 
-  createOrUpdate(user: User){
+  createOrUpdate(user: User): Observable<ResponseApi>{
     if(user.id != null && user.id != ''){
-      return this.http.put(`${HELP_DESK_API}/api/user`,user);
+      return this.http.put<ResponseApi>(`${HELP_DESK_API}/api/user`,user);
     } else {
       user.id = null;
-      return this.http.post(`${HELP_DESK_API}/api/user`, user);
+      return this.http.post<ResponseApi>(`${HELP_DESK_API}/api/user`, user);
     }
   }
 
@@ -30,8 +31,8 @@ export class UserService {
     return this.http.get(`${HELP_DESK_API}/api/user/${page}/${count}`);
   }
 
-  findById(id:string){
-    return this.http.get(`${HELP_DESK_API}/api/user/${id}`);
+  findById(id:string): Observable<ResponseApi> {
+    return this.http.get<ResponseApi>(`${HELP_DESK_API}/api/user/${id}`);
   }
 
   delete(id:string){
