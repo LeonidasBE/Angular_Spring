@@ -19,7 +19,7 @@ export class UserNewComponent {
   form: NgForm = new NgForm([], []);
   user = new User('','','','',);
   shared: SharedService;
-  message : {} = {};
+  message : {text : string, type: string} = { text: '', type: ''};
   classCss: { [key: string]: boolean } = {};
 
   constructor(private userService: UserService,
@@ -48,7 +48,7 @@ export class UserNewComponent {
   }
 
   register() {
-    this.message = {};
+    this.newMessageText();
     this.userService.createOrUpdate(this.user).subscribe((responseApi: ResponseApi) => {
       this.user = new User('','','','',);
       let userRet : User = responseApi.data;
@@ -69,7 +69,7 @@ export class UserNewComponent {
     this.message = message;
     this.buildClasses(message.type);
     setTimeout(() => {
-      this.message = {};
+      this.newMessageText()
     }, 3000)
   }
 
@@ -86,6 +86,10 @@ export class UserNewComponent {
       'has-error' : isInvalid  && isDirty,
       'has-success' : !isInvalid  && isDirty
     };
+  }
+
+  private newMessageText() {
+    this.message = { text: '', type: ''};
   }
 
 }
