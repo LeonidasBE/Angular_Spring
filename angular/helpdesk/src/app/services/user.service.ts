@@ -27,16 +27,16 @@ export class UserService {
     }
   }
 
-  findAll(page:number,count:number){
-    return this.http.get(`${HELP_DESK_API}/api/user/${page}/${count}`);
+  findAll(page:number,count:number): Observable<ResponseApi>{
+    return this.http.get<ResponseApi>(`${HELP_DESK_API}/api/user/${page}/${count}`);
   }
 
   findById(id:string): Observable<ResponseApi> {
     return this.http.get<ResponseApi>(`${HELP_DESK_API}/api/user/${id}`);
   }
 
-  delete(id:string){
-    return this.http.delete(`${HELP_DESK_API}/api/user/${id}`);
+  delete(id:string): Observable<ResponseApi>{
+    return this.http.delete<ResponseApi>(`${HELP_DESK_API}/api/user/${id}`);
   }
 
 }
