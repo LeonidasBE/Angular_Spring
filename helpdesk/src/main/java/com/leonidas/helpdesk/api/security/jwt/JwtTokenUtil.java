@@ -98,7 +98,7 @@ public class JwtTokenUtil implements Serializable {
         return Jwts.builder()
                 .claims(claims)
                 .expiration(expirationDate)
-                .signWith(SignatureAlgorithm.HS256, getSignInKey())
+                .signWith(getSignInKey())
                 .compact();
     }
 

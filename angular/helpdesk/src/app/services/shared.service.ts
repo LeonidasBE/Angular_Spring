@@ -12,15 +12,14 @@ export class SharedService {
   showTemplate = new EventEmitter<boolean>();
 
   constructor() {
-    return SharedService.instance = SharedService.instance || this;
+    SharedService.instance = SharedService.instance || this;
   }
-
 
   public static getInstance() {
-  if(this.instance == null) {
-    this.instance = new SharedService();
-  }
-  return this.instance;
+    if(!this.instance) {
+      this.instance = new SharedService();
+    }
+    return this.instance;
   }
 
   isLoggedIn() : boolean {

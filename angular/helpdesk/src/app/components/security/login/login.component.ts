@@ -31,17 +31,20 @@ export class LoginComponent implements OnInit {
 
   login(){
     this.message = '';
-    this.userService.login(this.user).subscribe((userAuthentication:CurrentUser) => {
+    this.userService.login(this.user).subscribe({
+      next: (userAuthentication:CurrentUser) => {
         this.shared.token = userAuthentication.token;
         this.shared.user = userAuthentication.user;
         this.shared.user.profile = this.shared.user.profile.substring(5);
         this.shared.showTemplate.emit(true);
         this.router.navigate(['/']);
-    } , err => {
-      this.shared.token = '';
-      this.shared.user = new User('','','','');
-      this.shared.showTemplate.emit(false);
-      this.message = 'Error';
+      },
+      error: err => {
+        this.shared.token = '';
+        this.shared.user = new User('','','','');
+        this.shared.showTemplate.emit(false);
+        this.message = 'Error';
+      }
     });
   }
 

@@ -1,3 +1,4 @@
+import { AuthGuard } from './../security/auth.guard';
 import { UserService } from './../../services/user.service';
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
@@ -36,33 +37,40 @@ export class UserNewComponent {
   }
 
   findById(id:string) {
-    this.userService.findById(id).subscribe((responseApi: ResponseApi) => {
-      this.user = responseApi.data;
-      this.user.password = '';
-    }, err => {
-      this.showMessage({
-        type: 'error',
-        text: err['error']['errors'][0]
-      });
+    this.userService.findById(id).subscribe({
+      next: (responseApi: ResponseApi) => {
+        this.user = responseApi.data;
+        this.user.password = '';
+      },
+      error: err => {
+        this.showMessage({
+          type: 'error',
+          text: err['error']['errors'][0]
+        });
+      }
     });
   }
 
   register() {
     this.newMessageText();
-    this.userService.createOrUpdate(this.user).subscribe((responseApi: ResponseApi) => {
-      this.user = new User('','','','',);
-      let userRet : User = responseApi.data;
-      this.form.resetForm();
-      this.showMessage({
-        type: 'success',
-        text: `Registered ${userRet.email} successfully`
-      });
-    }, err => {
+    this.userService.createOrUpdate(this.user).subscribe({
+      next: (responseApi: ResponseApi) => {
+        this.user = new User('','','','',);
+        let userRet : User = responseApi.data;
+        this.form.resetForm();
         this.showMessage({
-        type: 'error',
-        text: err['error']['errors'][0]
+          type: 'success',
+          text: `Registered ${userRet.email} successfully`
         });
+      },
+      error: err => {
+        this.showMessage({
+          type: 'error',
+          text: err['error']['errors'][0]
+        });
+      }
     });
+      
   }
 
   private showMessage(message: {type: string, text: string}): void {
@@ -80,7 +88,7 @@ export class UserNewComponent {
     this.classCss['alert-'+type] = true;
   }
 
-    getFormGroupClass(isInvalid: boolean, isDirty:boolean): {} {
+  getFormGroupClass(isInvalid: boolean, isDirty:boolean): {} {
     return {
       'form-group': true,
       'has-error' : isInvalid  && isDirty,
