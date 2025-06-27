@@ -19,7 +19,7 @@ export class UserService {
   }
 
   createOrUpdate(user: User): Observable<ResponseApi>{
-    if(user.id != null && user.id != ''){
+    if(user.id != ''){
       return this.http.put<ResponseApi>(`${HELP_DESK_API}/api/user`,user);
     } else {
       user.id = null;
