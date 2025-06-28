@@ -8,12 +8,14 @@ import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@a
 import { AuthInterceptor } from './components/security/auth.interceptor';
 import { AuthGuard } from './components/security/auth.guard';
 import { DialogService } from './model/dialogService';
+import { TicketService } from './services/ticket.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes), 
     provideHttpClient(withInterceptorsFromDi()), 
     UserService, 
+    TicketService,
     SharedService,
     AuthGuard,
     DialogService,

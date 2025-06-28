@@ -2,29 +2,29 @@ package com.leonidas.HelpDesk.api.enums;
 
 public enum StatusEnum {
 
-    NEW,
-    ASSIGNED,
-    RESOLVED,
-    APPROVED,
-    DISAPPROVED,
-    CLOSED;
+    New,
+    Assigned,
+    Resolved,
+    Approved,
+    Disapproved,
+    Closed;
 
     public static StatusEnum getStatus(String status){
         switch (status){
             case "New":
-                return NEW;
+                return New;
             case "Assigned":
-                return ASSIGNED;
+                return Assigned;
             case "Resolved":
-                return RESOLVED;
+                return Resolved;
             case "Approved":
-                return APPROVED;
+                return Approved;
             case "Disapproved":
-                return DISAPPROVED;
+                return Disapproved;
             case "Closed":
-                return CLOSED;
+                return Closed;
             default:
-                return null;
+                return New;
         }
     }
 

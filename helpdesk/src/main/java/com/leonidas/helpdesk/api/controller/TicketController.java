@@ -261,22 +261,22 @@ public class TicketController {
             Iterable<Ticket> tickets = ticketService.findAll();
             for(Iterator<Ticket> iterator = tickets.iterator(); iterator.hasNext();) {
                 Ticket ticket = iterator.next();
-                if(ticket.getStatus().equals(StatusEnum.NEW)) {
+                if(ticket.getStatus().equals(StatusEnum.New)) {
                     amountNew++;
                 }
-                if(ticket.getStatus().equals(StatusEnum.RESOLVED)) {
+                if(ticket.getStatus().equals(StatusEnum.Resolved)) {
                     amountResolved++;
                 }
-                if(ticket.getStatus().equals(StatusEnum.APPROVED)) {
+                if(ticket.getStatus().equals(StatusEnum.Approved)) {
                     amountApproved++;
                 }
-                if(ticket.getStatus().equals(StatusEnum.DISAPPROVED)) {
+                if(ticket.getStatus().equals(StatusEnum.Disapproved)) {
                     amountDisapproved++;
                 }
-                if(ticket.getStatus().equals(StatusEnum.ASSIGNED)) {
+                if(ticket.getStatus().equals(StatusEnum.Assigned)) {
                     amountAssigned++;
                 }
-                if(ticket.getStatus().equals(StatusEnum.CLOSED)) {
+                if(ticket.getStatus().equals(StatusEnum.Closed)) {
                     amountClosed++;
                 }
             }

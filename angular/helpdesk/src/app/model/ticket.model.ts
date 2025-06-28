@@ -8,9 +8,10 @@ export class Ticket {
         public status: string,
         public priority: string, 
         public image: string, 
-        public user: User, 
-        public assignedUser: User,
+        public user: User | null, 
+        public assignedUser: User | null,
         public date: string,
-        public changes: Array<string> 
+        public changes: Array<string>,
+        public description: string
     ){}
 }

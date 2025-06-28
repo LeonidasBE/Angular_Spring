@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Ticket } from '../model/ticket.model';
 import { HELP_DESK_API } from './helpdesk.api';
+import { ResponseApi } from '../model/response-api';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +12,13 @@ export class TicketService {
 
   constructor(private http: HttpClient) { }
 
-  createOrUpdate(ticket: Ticket){
+  createOrUpdate(ticket: Ticket): Observable<ResponseApi>{
     if(ticket.id != null && ticket.id != ''){
-      return this.http.put(`${HELP_DESK_API}/api/ticket`, ticket);
+      return this.http.put<ResponseApi>(`${HELP_DESK_API}/api/ticket`, ticket);
     } else {
       ticket.id = null;
       ticket.status = 'New';
-      return this.http.post(`${HELP_DESK_API}/api/ticket`, ticket);
+      return this.http.post<ResponseApi>(`${HELP_DESK_API}/api/ticket`, ticket);
     }
   }
 
@@ -24,8 +26,8 @@ export class TicketService {
     return this.http.get(`${HELP_DESK_API}/api/ticket/${page}/${count}`);
   }
 
-  findById(id: string){
-    return this.http.get(`${HELP_DESK_API}/api/ticket/${id}`);
+  findById(id: string): Observable<ResponseApi>{
+    return this.http.get<ResponseApi>(`${HELP_DESK_API}/api/ticket/${id}`);
   }
 
   delete(id: string){
