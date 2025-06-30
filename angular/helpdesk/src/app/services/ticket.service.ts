@@ -22,25 +22,25 @@ export class TicketService {
     }
   }
 
-  findAll(page: number, count: number){
-    return this.http.get(`${HELP_DESK_API}/api/ticket/${page}/${count}`);
+  findAll(page: number, count: number): Observable<ResponseApi> {
+    return this.http.get<ResponseApi>(`${HELP_DESK_API}/api/ticket/${page}/${count}`);
   }
 
   findById(id: string): Observable<ResponseApi>{
     return this.http.get<ResponseApi>(`${HELP_DESK_API}/api/ticket/${id}`);
   }
 
-  delete(id: string){
-    return this.http.delete(`${HELP_DESK_API}/api/ticket/${id}`);
+  delete(id: string): Observable<ResponseApi>{
+    return this.http.delete<ResponseApi>(`${HELP_DESK_API}/api/ticket/${id}`);
   }
 
-  findByParams(page: number, count: number, assignedToMe: boolean, t: Ticket){
+  findByParams(page: number, count: number, assignedToMe: boolean, t: Ticket): Observable<ResponseApi>{
     t.number = t.number ?? 0;
     t.title = t.title == '' ? 'uninformed' : t.title;
     t.status = t.status == '' ? 'uninformed' : t.status;
     t.priority = t.priority == '' ? 'uninformed' : t.priority;
 
-    return this.http.get(`${HELP_DESK_API}/api/ticket/${page}/${count}/${t.number}/${t.title}/${t.status}/${t.priority}/${assignedToMe}`);
+    return this.http.get<ResponseApi>(`${HELP_DESK_API}/api/ticket/${page}/${count}/${t.number}/${t.title}/${t.status}/${t.priority}/${assignedToMe}`);
   }
 
   changeStatus(status: string, ticket: Ticket){

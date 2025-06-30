@@ -3,7 +3,7 @@ import { User } from "./user.model";
 export class Ticket {
     constructor(
         public id: string | null,
-        public number: number,
+        public number: number | null,
         public title: string,
         public status: string,
         public priority: string, 
