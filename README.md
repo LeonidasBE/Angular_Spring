@@ -1,4 +1,4 @@
-# 🧪 Projeto de Aprendizado com Angular & Spring Boot
+sk# 🧪 Projeto de Aprendizado com Angular & Spring Boot
 
 Este repositório é voltado para estudos e experimentações com diversas tecnologias, com foco principal em **Angular** e **Spring Boot**.
 
@@ -38,9 +38,8 @@ A ideia é seguir evoluindo o projeto com o uso de novas tecnologias e boas prá
 
 ```bash
 /
-├── backend/         # Código do Spring Boot
-├── frontend/        # Aplicação Angular
-├── docker/          # Arquivos de containerização (em breve)
+├── helpdesk/         # Código principal do Spring Boot
+├── angular/helpdesk  # Aplicação principal Angular
 └── README.md
 ```
 
@@ -59,7 +58,7 @@ A ideia é seguir evoluindo o projeto com o uso de novas tecnologias e boas prá
 
 ```bash
 # Acesse a pasta do backend
-cd backend
+cd helpdesk/
 
 # Execute a aplicação
 ./mvnw spring-boot:run
@@ -69,7 +68,7 @@ cd backend
 
 ```bash
 # Acesse a pasta do frontend
-cd frontend
+cd angular/helpdesk
 
 # Instale as dependências
 npm install
