@@ -21,7 +21,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a><i class="fa fa-circle-o"></i> List</a></li>
+            <li><a routerLink="/ticket-list"><i class="fa fa-circle-o"></i> List</a></li>
             <li *ngIf="shared.user.profile ==='CUSTOMER'"><a routerLink="/ticket-new"><i class="fa fa-circle-o"></i> New Ticket</a></li>
           </ul>
         </li>

@@ -178,9 +178,9 @@ public class TicketController {
                                                                     @PathVariable("assigned") boolean assigned
                                                                     ) {
 
-        title = title.equals("uniformed") ? "" : title;
-        status = status.equals("uniformed") ? "" : status;
-        priority = priority.equals("uniformed") ? "" : priority;
+        title = title.equals("uninformed") ? "" : title;
+        status = status.equals("uninformed") ? "" : status;
+        priority = priority.equals("uninformed") ? "" : priority;
 
         Response<Page<Ticket>> ticketResponse = new Response<Page<Ticket>>();
         try {

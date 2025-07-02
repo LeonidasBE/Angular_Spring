@@ -5,10 +5,12 @@ import { DialogService } from '../../model/dialogService';
 import { TicketService } from '../../services/ticket.service';
 import { Router } from '@angular/router';
 import { ResponseApi } from '../../model/response-api';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-ticket-list',
-  imports: [],
+  imports: [CommonModule, FormsModule],
   templateUrl: './ticket-list.component.html',
   styleUrl: './ticket-list.component.css'
 })
@@ -83,13 +85,13 @@ export class TicketListComponent {
       })
   }
 
-  find(): void {
+  filter(): void {
     this.ticketService.findByParams(this.page, this.count, this.assignedToMe, this.ticketFilter).subscribe({
       next: (responseApi) => {
         this.ticketFilter. title = this.ticketFilter.title == 'uninformed' ? '' : this.ticketFilter.title;
         this.ticketFilter. number = this.ticketFilter.number != null && this.ticketFilter.number < 1 ? null : this.ticketFilter.number;
-        this.listTicket = responseApi['data'][ 'totalPages'];
-
+        this.listTicket = responseApi['data']['content'];
+        this.pages = new Array(responseApi['data']['totalPages']);
       },
       error: err => {
         this.showMessage({

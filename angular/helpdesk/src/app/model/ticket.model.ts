@@ -1,3 +1,4 @@
+import { ChangeStatus } from "./changeStatus.model";
 import { User } from "./user.model";
 
 export class Ticket {
@@ -11,7 +12,7 @@ export class Ticket {
         public user: User | null, 
         public assignedUser: User | null,
         public date: string,
-        public changes: Array<string>,
+        public changes: Array<ChangeStatus>,
         public description: string
     ){}
 }

@@ -36,19 +36,18 @@ export class TicketService {
 
   findByParams(page: number, count: number, assignedToMe: boolean, t: Ticket): Observable<ResponseApi>{
     t.number = t.number ?? 0;
-    t.title = t.title == '' ? 'uninformed' : t.title;
-    t.status = t.status == '' ? 'uninformed' : t.status;
-    t.priority = t.priority == '' ? 'uninformed' : t.priority;
-
+    t.title = t.title == '' ? "uninformed" : t.title;
+    t.status = t.status == '' ? "uninformed" : t.status;
+    t.priority = t.priority == '' ? "uninformed" : t.priority;  
     return this.http.get<ResponseApi>(`${HELP_DESK_API}/api/ticket/${page}/${count}/${t.number}/${t.title}/${t.status}/${t.priority}/${assignedToMe}`);
   }
 
-  changeStatus(status: string, ticket: Ticket){
-    return this.http.put(`${HELP_DESK_API}/api/ticket/${ticket.id}/${status}`, ticket);
+  changeStatus(status: string, ticket: Ticket):Observable<ResponseApi>{
+    return this.http.put<ResponseApi>(`${HELP_DESK_API}/api/ticket/${ticket.id}/${status}`, ticket);
   }
 
-  summary(){
-    return this.http.get(`${HELP_DESK_API}/api/ticket/summary`);
+  summary(): Observable<ResponseApi>{
+    return this.http.get<ResponseApi>(`${HELP_DESK_API}/api/ticket/summary`);
   }
 
 }
