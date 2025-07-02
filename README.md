@@ -1,4 +1,4 @@
-sk# 🧪 Projeto de Aprendizado com Angular & Spring Boot
+## 🧪 Projeto de Aprendizado com Angular & Spring Boot
 
 Este repositório é voltado para estudos e experimentações com diversas tecnologias, com foco principal em **Angular** e **Spring Boot**.
 
