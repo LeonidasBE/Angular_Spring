@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.leonidas.HelpDesk.HelpDeskApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.890 s -- in com.leonidas.HelpDesk.HelpDeskApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.815 s -- in com.leonidas.HelpDesk.HelpDeskApplicationTests
