@@ -1,0 +1,24 @@
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: helpdesk
+
+jwt:
+  secret: aGVscERlc2tfYXBwbGljYXRpb25fbGVvbmlkYXNfYjY0
+# expiration 7 days
+  expiration: 604800
+
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          mongodb:
+            core:
+              MongoTemplate: DEBUG
+#logging.level.org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer=ERROR
+
+server:
+  port: 8082
