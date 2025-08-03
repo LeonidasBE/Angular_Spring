@@ -53,6 +53,7 @@ A ideia é seguir evoluindo o projeto com o uso de novas tecnologias e boas prá
 - Angular CLI instalado globalmente
 - Java 17
 - Maven
+- MongoDB 8.0.12
 
 ### Backend (Spring Boot)
 
