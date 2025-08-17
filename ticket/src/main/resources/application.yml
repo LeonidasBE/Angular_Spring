@@ -1,2 +1,24 @@
+spring:
+  application:
+    name: ticket
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/helpdesk
+
 server:
-  port: 8083
+  port: 8081
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance: # Força a instância a usar o IP e hostname especificados, colocar em todos os serviços por conta de possiveis problemas com DNS
+    # Se não for colocado, o Eureka irá tentar resolver o hostname e pode dar problemas em
+    # ambientes que não possuem DNS configurado ou o hostname não é resolvível.
+    hostname: localhost
+    prefer-ip-address: true
+    ip-address: 127.0.0.1

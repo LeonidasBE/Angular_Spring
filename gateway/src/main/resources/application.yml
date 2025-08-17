@@ -1,15 +1,44 @@
 server:
-  port: 8080
+  port: 9000
 
 spring:
   application:
     name: gateway
-#  cloud:
-#    gateway:
-#      routes:
-#        - id: ticket
-#          uri: http://localhost:8083
-#          predicates:
-#            - Path=/api/ticket/**
-#          filters:
-#            - RewritePath=/api/ticket/(?<segment>.*),/$\{segment}
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: gateway
+            client-secret: bsRiFGyGcQuHHYKYS3FkfWAppDkK170c
+            scope: openid, profile, email
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8080/realms/helpdesk
+  cloud:
+    gateway:
+      server:
+        webflux:
+          discovery:
+            locator:
+              enabled: true # Habilita a descoberta de serviços registrados com Eureka
+              lower-case-service-id: true # Converte os IDs dos serviços para minúsculas, facilita as requisiçoes e legibilidade
+          routes:
+#            - id: ticket
+#              uri: http://localhost:8081
+#              predicates:
+#                - Path=/ticket/**
+              filters:
+                - TokenRelay= # Habilita o Token Relay para encaminhar o token JWT do usuário autenticado para os serviços downstream (serviços registrados no gateway)
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/ # Eureka server URL
+    register-with-eureka: true # Register this service with Eureka
+    fetch-registry: true # Fetch the registry from Eureka
+  instance: # Força a instância a usar o IP e hostname especificados, colocar em todos os serviços por conta de possiveis problemas com DNS
+    # Se não for colocado, o Eureka irá tentar resolver o hostname e pode dar problemas em
+    # ambientes que não possuem DNS configurado ou o hostname não é resolvível.
+    hostname: localhost
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
